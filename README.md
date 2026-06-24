@@ -1,17 +1,45 @@
-# flutter_curs
+# Pokédex — Curs de Flutter
 
-A new Flutter project.
+Aplicació Pokédex desenvolupada al llarg del curs **"Desenvolupament d'Apps Multiplataforma amb Flutter"**.
 
-## Getting Started
+## Estructura per branques (calendari)
 
-This project is a starting point for a Flutter application.
+Cada sessió usarem una branca **inici** (d’on sortim) i, quan el docent en publiqui una, una branca **final** amb el codi comentat de referència d’aquell dia.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+## Instruccions
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Primera vegada (només una)
+
+```bash
+git clone https://github.com/arnair/flutter_curs.git
+cd flutter_curs
+flutter pub get
+```
+
+La branca per defecte del repositori és `dia-1-inici` (o comprova-ho amb `git branch`).
+
+### Inici de cada classe (quan hi hagi noves branques al repositori)
+
+```bash
+git fetch origin
+git checkout dia-X-inici
+flutter pub get
+```
+
+### Si t'has perdut o vols comparar amb el codi resolt
+
+```bash
+git fetch origin
+git checkout dia-X-final
+```
+
+## Executar l’app
+
+L’**emulador Android** o el **simulador iOS** són l’objectiu per defecte. **Web (Chrome)** és alternativa.
+
+```bash
+flutter devices
+flutter run
+# o, per web només:  flutter run -d chrome
+```
