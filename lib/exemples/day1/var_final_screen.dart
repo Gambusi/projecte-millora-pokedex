@@ -9,9 +9,10 @@ class VarFinalScreen extends StatelessWidget {
     var name = 'Charmander';
     name = 'Charmeleon';
 
-    final starterLocked = 'Bulbasaur';
+    const starterLocked = 'Bulbasaur';
 
     final capturedAt = DateTime.now();
+
     const maxTeamSize = 6;
 
     late String description;

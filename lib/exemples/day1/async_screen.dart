@@ -12,7 +12,7 @@ class _AsyncScreenState extends State<AsyncScreen> {
   String? _result;
 
   Future<String> _fetchPokemonName() async {
-    await Future<void>.delayed(const Duration(milliseconds: 600));
+    await Future<void>.delayed(const Duration(milliseconds: 2000));
     return 'MewtwoNew';
   }
 
