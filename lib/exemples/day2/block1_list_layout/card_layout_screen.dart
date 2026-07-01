@@ -15,7 +15,7 @@ class CardLayoutScreen extends StatelessWidget {
         children: [
           const SizedBox(height: 16),
           Day2PokeCard(pokemon: kD2Pokes.first),
-          Day2PokeCard(pokemon: kD2Pokes[1]),
+          Day2PokeCard(pokemon: kD2Pokes[3]),
         ],
       ),
     );

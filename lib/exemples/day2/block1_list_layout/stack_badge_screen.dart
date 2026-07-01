@@ -19,7 +19,7 @@ class StackBadgeScreen extends StatelessWidget {
               ),
               const SizedBox(height: 12),
               Stack(
-                alignment: Alignment.bottomRight,
+                alignment: Alignment.topRight,
                 clipBehavior: Clip.none,
                 children: [
                   const CircleAvatar(
@@ -40,14 +40,14 @@ class StackBadgeScreen extends StatelessWidget {
                       shape: BoxShape.circle,
                     ),
                     child: const Icon(
-                      Icons.star,
+                      Icons.access_alarm,
                       size: 18,
                       color: Colors.white,
                     ),
                   ),
                   Positioned(
-                    top: -10,
-                    left: 0,
+                    top: 0,
+                    left: 10,
                     child: Container(
                       padding: const EdgeInsets.all(6),
                       decoration: const BoxDecoration(

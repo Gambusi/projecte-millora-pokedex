@@ -29,12 +29,16 @@ class _SameThemeDemoCard extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 8),
-            Text(
-              'Cos amb bodyMedium; el ColorScheme pinta icona, superfície i botó.',
-              style: theme.textTheme.bodyMedium,
+            GestureDetector(
+              onTap: () {},
+              child: Text(
+                'Cos amb bodyMedium; el ColorScheme pinta icona, superfície i botó.',
+                style: theme.textTheme.bodyMedium,
+              ),
             ),
             const SizedBox(height: 12),
             FilledButton.tonal(
+              style: FilledButton.styleFrom(backgroundColor: Colors.yellow),
               onPressed: () {},
               child: const Text('Acció tonal'),
             ),
@@ -59,21 +63,19 @@ class TextThemeScreen extends StatelessWidget {
           const SizedBox(height: 20),
           Text(
             'Tema global (MaterialApp)',
-            style: baseTheme.textTheme.titleSmall,
+            style: baseTheme.textTheme.headlineLarge,
           ),
           const SizedBox(height: 8),
           const _SameThemeDemoCard(),
           const SizedBox(height: 24),
           Text(
             'Tema local (només aquesta sub-arrel)',
-            style: baseTheme.textTheme.titleSmall,
+            style: TextStyle(fontSize: 40),
           ),
           const SizedBox(height: 8),
           Theme(
             data: baseTheme.copyWith(
-              colorScheme: ColorScheme.fromSeed(
-                seedColor: const Color.fromARGB(255, 194, 0, 32),
-              ),
+              colorScheme: ColorScheme.fromSeed(seedColor: Colors.yellow),
               textTheme: baseTheme.textTheme.copyWith(
                 bodyMedium: baseTheme.textTheme.bodyMedium?.copyWith(
                   fontSize: 25,
