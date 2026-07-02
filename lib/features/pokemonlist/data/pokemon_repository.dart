@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:flutter_curs/features/home/domain/pokemon_model.dart';
+import 'package:flutter_curs/features/pokemonlist/domain/pokemon_model.dart';
 
 const listPokemons = <Pokemon>[
   Pokemon(

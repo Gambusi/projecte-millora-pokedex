@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_curs/features/home/data/pokemon_repository.dart';
+import 'package:flutter_curs/features/pokemonlist/data/pokemon_repository.dart';
 import 'package:flutter_curs/widgets/cards/pokemon_card.dart';
 
 class PokemonScreen extends StatelessWidget {
