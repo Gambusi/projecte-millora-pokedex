@@ -59,7 +59,7 @@ class _AnimationControllerTweenScreenState
                 } else {
                   _controller.reverse(from: 1);
                 }
-                setState(() => _forwardNext = !_forwardNext);
+                _forwardNext = !_forwardNext;
               },
               icon: Icon(_forwardNext ? Icons.arrow_forward : Icons.arrow_back),
               label: Text(_forwardNext ? 'Endavant' : 'Enrere'),
