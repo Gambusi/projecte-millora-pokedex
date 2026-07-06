@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'block1_responsive_platform/b1_hub_screen.dart';
-import 'block2_system_preferences/shared_preferences_demo_screen.dart';
+import 'block2_system_preferences/b2_hub_screen.dart';
 import 'widgets/root_hub.dart';
 
 class Day4HubScreen extends StatelessWidget {
@@ -24,7 +24,7 @@ class Day4HubScreen extends StatelessWidget {
           title: 'Bloc 2 · SharedPreferences',
           subtitle:
               'getInstance, get/set, claus i persistència entre sessions.',
-          screen: SharedPreferencesDemoScreen(),
+          screen: Day4B2HubScreen(),
         ),
       ],
     );

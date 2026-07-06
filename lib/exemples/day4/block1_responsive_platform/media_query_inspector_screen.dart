@@ -63,10 +63,7 @@ class _InfoTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       margin: const EdgeInsets.only(bottom: 8),
-      child: ListTile(
-        title: Text(title),
-        subtitle: Text(value, style: const TextStyle(fontFeatures: [])),
-      ),
+      child: ListTile(title: Text(title), subtitle: Text(value)),
     );
   }
 }
