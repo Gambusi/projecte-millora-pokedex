@@ -62,6 +62,7 @@ class _PlatformPointerScrollScreenState
           Text('MouseRegion', style: theme.textTheme.titleMedium),
           const SizedBox(height: 8),
           MouseRegion(
+            cursor: SystemMouseCursors.help,
             onEnter: (_) => setState(() => _hover = true),
             onExit: (_) => setState(() => _hover = false),
             child: AnimatedContainer(

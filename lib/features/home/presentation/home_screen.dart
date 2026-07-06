@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_curs/features/map/presentation/map_screen.dart';
 import 'package:flutter_curs/features/pokemonlist/presentation/pokemon_screen.dart';
@@ -28,10 +29,31 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
     );
   }
 
+  Future<void> _descarregaApp() async {
+    await showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Millor experiència a l\'app'),
+        content: const Text(
+          'Per gaudir de totes les funcions, descarrega l\'aplicació al teu dispositiu.',
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(),
+            child: const Text('D\'acord'),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
+    if (kIsWeb) {
+      WidgetsBinding.instance.addPostFrameCallback((_) => _descarregaApp());
+    }
   }
 
   @override
