@@ -45,19 +45,17 @@ class _SearchScreenState extends State<SearchScreen> {
       _loading = true;
       _error = null;
     });
-
     try {
       final result = await _repository.search(q);
-      setState(() => _results = result.products);
+      _results = result.products;
     } catch (e) {
-      setState(() {
-        _error = e is DioException && e.response?.statusCode != null
-            ? 'HTTP ${e.response!.statusCode}'
-            : 'Error de xarxa: $e';
-        _results = const [];
-      });
+      _error = e is DioException && e.response?.statusCode != null
+          ? 'HTTP ${e.response!.statusCode}'
+          : 'Error de xarxa: $e';
+      _results = const [];
     } finally {
-      if (mounted) setState(() => _loading = false);
+      _loading = false;
+      if (mounted) setState(() {});
     }
   }
 

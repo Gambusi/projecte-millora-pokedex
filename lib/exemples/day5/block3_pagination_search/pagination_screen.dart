@@ -37,10 +37,10 @@ class _PaginationScreenState extends State<PaginationScreen> {
     }
   }
 
-  Future<void> _loadNext() async {
+  Future<void> _loadNext({bool loading = false}) async {
     if (_loading || !_hasMore) return;
     setState(() {
-      _loading = true;
+      _loading = loading;
       _error = null;
     });
 
@@ -73,7 +73,7 @@ class _PaginationScreenState extends State<PaginationScreen> {
       _hasMore = true;
       _error = null;
     });
-    await _loadNext();
+    await _loadNext(loading: false);
   }
 
   @override
