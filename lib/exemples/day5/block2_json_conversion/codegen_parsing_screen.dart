@@ -102,6 +102,19 @@ class ProductRepository {
 }
 
 @freezed
+abstract class ProductNew with _$ProductNew {
+  const factory ProductNew({
+    required int id,
+    required String title,
+    required double price,
+    required int stock,
+    required List<String> tags,
+  }) = _ProductNew;
+  factory ProductNew.fromJson(Map<String, dynamic> json) =>
+      _$ProductNewFromJson(json);
+}
+
+@freezed
 abstract class Product with _$Product {
   const factory Product({
     required int id,

@@ -13,6 +13,287 @@ part of 'codegen_parsing_screen.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
+mixin _$ProductNew {
+
+ int get id; String get title; double get price; int get stock; List<String> get tags;
+/// Create a copy of ProductNew
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ProductNewCopyWith<ProductNew> get copyWith => _$ProductNewCopyWithImpl<ProductNew>(this as ProductNew, _$identity);
+
+  /// Serializes this ProductNew to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductNew&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title)&&(identical(other.price, price) || other.price == price)&&(identical(other.stock, stock) || other.stock == stock)&&const DeepCollectionEquality().equals(other.tags, tags));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,id,title,price,stock,const DeepCollectionEquality().hash(tags));
+
+@override
+String toString() {
+  return 'ProductNew(id: $id, title: $title, price: $price, stock: $stock, tags: $tags)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $ProductNewCopyWith<$Res>  {
+  factory $ProductNewCopyWith(ProductNew value, $Res Function(ProductNew) _then) = _$ProductNewCopyWithImpl;
+@useResult
+$Res call({
+ int id, String title, double price, int stock, List<String> tags
+});
+
+
+
+
+}
+/// @nodoc
+class _$ProductNewCopyWithImpl<$Res>
+    implements $ProductNewCopyWith<$Res> {
+  _$ProductNewCopyWithImpl(this._self, this._then);
+
+  final ProductNew _self;
+  final $Res Function(ProductNew) _then;
+
+/// Create a copy of ProductNew
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? title = null,Object? price = null,Object? stock = null,Object? tags = null,}) {
+  return _then(_self.copyWith(
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
+as String,price: null == price ? _self.price : price // ignore: cast_nullable_to_non_nullable
+as double,stock: null == stock ? _self.stock : stock // ignore: cast_nullable_to_non_nullable
+as int,tags: null == tags ? _self.tags : tags // ignore: cast_nullable_to_non_nullable
+as List<String>,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [ProductNew].
+extension ProductNewPatterns on ProductNew {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _ProductNew value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _ProductNew() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _ProductNew value)  $default,){
+final _that = this;
+switch (_that) {
+case _ProductNew():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _ProductNew value)?  $default,){
+final _that = this;
+switch (_that) {
+case _ProductNew() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  String title,  double price,  int stock,  List<String> tags)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _ProductNew() when $default != null:
+return $default(_that.id,_that.title,_that.price,_that.stock,_that.tags);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  String title,  double price,  int stock,  List<String> tags)  $default,) {final _that = this;
+switch (_that) {
+case _ProductNew():
+return $default(_that.id,_that.title,_that.price,_that.stock,_that.tags);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  String title,  double price,  int stock,  List<String> tags)?  $default,) {final _that = this;
+switch (_that) {
+case _ProductNew() when $default != null:
+return $default(_that.id,_that.title,_that.price,_that.stock,_that.tags);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+@JsonSerializable()
+
+class _ProductNew implements ProductNew {
+  const _ProductNew({required this.id, required this.title, required this.price, required this.stock, required final  List<String> tags}): _tags = tags;
+  factory _ProductNew.fromJson(Map<String, dynamic> json) => _$ProductNewFromJson(json);
+
+@override final  int id;
+@override final  String title;
+@override final  double price;
+@override final  int stock;
+ final  List<String> _tags;
+@override List<String> get tags {
+  if (_tags is EqualUnmodifiableListView) return _tags;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_tags);
+}
+
+
+/// Create a copy of ProductNew
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$ProductNewCopyWith<_ProductNew> get copyWith => __$ProductNewCopyWithImpl<_ProductNew>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$ProductNewToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProductNew&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title)&&(identical(other.price, price) || other.price == price)&&(identical(other.stock, stock) || other.stock == stock)&&const DeepCollectionEquality().equals(other._tags, _tags));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,id,title,price,stock,const DeepCollectionEquality().hash(_tags));
+
+@override
+String toString() {
+  return 'ProductNew(id: $id, title: $title, price: $price, stock: $stock, tags: $tags)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$ProductNewCopyWith<$Res> implements $ProductNewCopyWith<$Res> {
+  factory _$ProductNewCopyWith(_ProductNew value, $Res Function(_ProductNew) _then) = __$ProductNewCopyWithImpl;
+@override @useResult
+$Res call({
+ int id, String title, double price, int stock, List<String> tags
+});
+
+
+
+
+}
+/// @nodoc
+class __$ProductNewCopyWithImpl<$Res>
+    implements _$ProductNewCopyWith<$Res> {
+  __$ProductNewCopyWithImpl(this._self, this._then);
+
+  final _ProductNew _self;
+  final $Res Function(_ProductNew) _then;
+
+/// Create a copy of ProductNew
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? title = null,Object? price = null,Object? stock = null,Object? tags = null,}) {
+  return _then(_ProductNew(
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
+as String,price: null == price ? _self.price : price // ignore: cast_nullable_to_non_nullable
+as double,stock: null == stock ? _self.stock : stock // ignore: cast_nullable_to_non_nullable
+as int,tags: null == tags ? _self._tags : tags // ignore: cast_nullable_to_non_nullable
+as List<String>,
+  ));
+}
+
+
+}
+
+
+/// @nodoc
 mixin _$Product {
 
  int get id; String get title; double get price; int get stock; List<String> get tags;

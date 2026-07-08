@@ -6,6 +6,23 @@ part of 'codegen_parsing_screen.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+_ProductNew _$ProductNewFromJson(Map<String, dynamic> json) => _ProductNew(
+  id: (json['id'] as num).toInt(),
+  title: json['title'] as String,
+  price: (json['price'] as num).toDouble(),
+  stock: (json['stock'] as num).toInt(),
+  tags: (json['tags'] as List<dynamic>).map((e) => e as String).toList(),
+);
+
+Map<String, dynamic> _$ProductNewToJson(_ProductNew instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'title': instance.title,
+      'price': instance.price,
+      'stock': instance.stock,
+      'tags': instance.tags,
+    };
+
 _Product _$ProductFromJson(Map<String, dynamic> json) => _Product(
   id: (json['id'] as num).toInt(),
   title: json['title'] as String,
