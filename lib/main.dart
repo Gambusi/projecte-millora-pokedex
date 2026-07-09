@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_curs/exemples/day5/day5_hub_screen.dart';
+import 'package:flutter_curs/exemples/day6/day6_hub_screen.dart';
 import 'package:flutter_curs/features/home/presentation/home_screen.dart';
 
 void main() {
@@ -11,6 +11,6 @@ class PokedexApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: Day5HubScreen());
+    return MaterialApp(home: Day6HubScreen());
   }
 }
