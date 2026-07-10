@@ -25,9 +25,31 @@ class PokemonDetailScreen extends StatelessWidget {
 
             const SizedBox(height: 12),
 
-            Text('ID: ${pokemon.id}'),
+            // Mostrem les dades principals del Pokémon
+            // dins d'una targeta per destacar-les visualment
+            Card(
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  children: [
+                    Text(
+                      'ID: ${pokemon.id}',
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
 
-            Text('Tipus: ${pokemon.type}'),
+                    const SizedBox(height: 8),
+
+                    Text(
+                      'Tipus: ${pokemon.type}',
+                      style: const TextStyle(fontSize: 18),
+                    ),
+                  ],
+                ),
+              ),
+            ),
           ],
         ),
       ),
