@@ -5,27 +5,25 @@
 // ignore_for_file: type=lint, unused_import
 // dart format off
 
-part of 'strings.g.dart';
+import 'package:flutter/widgets.dart';
+import 'package:intl/intl.dart';
+import 'package:slang/generated.dart';
+import 'strings.g.dart';
 
 // Path: <root>
-typedef TranslationsEn = Translations; // ignore: unused_element
-class Translations with BaseTranslations<AppLocale, Translations> {
-	/// Returns the current translations of the given [context].
-	///
-	/// Usage:
-	/// final t = Translations.of(context);
-	static Translations of(BuildContext context) => InheritedLocaleData.of<AppLocale, Translations>(context).translations;
-
+class TranslationsEn extends Translations with BaseTranslations<AppLocale, Translations> {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	Translations({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
+	TranslationsEn({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
 		  $meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.en,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
 		    ordinalResolver: ordinalResolver,
-		  ) {
+		  ),
+		  super(cardinalResolver: cardinalResolver, ordinalResolver: ordinalResolver) {
+		super.$meta.setFlatMapFunction($meta.getTranslation); // copy base translations to super.$meta
 		$meta.setFlatMapFunction(_flatMapFunction);
 	}
 
@@ -33,25 +31,18 @@ class Translations with BaseTranslations<AppLocale, Translations> {
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
 	/// Access flat map
-	dynamic operator[](String key) => $meta.getTranslation(key);
+	@override dynamic operator[](String key) => $meta.getTranslation(key) ?? super.$meta.getTranslation(key);
 
-	late final Translations _root = this; // ignore: unused_field
+	late final TranslationsEn _root = this; // ignore: unused_field
 
-	Translations $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => Translations(meta: meta ?? this.$meta);
+	@override 
+	TranslationsEn $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => TranslationsEn(meta: meta ?? this.$meta);
 
 	// Translations
-
-	/// en: 'Translations · Slang'
-	String get appBarTitle => 'Translations · Slang';
-
-	/// en: 'Welcome to the Flutter course!'
-	String get welcome => 'Welcome to the Flutter course!';
-
-	/// en: 'Hello, ${name}!'
-	String greeting({required Object name}) => 'Hello, ${name}!';
-
-	/// en: '(zero) {No items} (one) {1 item} (other) {${n} items}'
-	String itemsCount({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('en'))(n,
+	@override String get appBarTitle => 'Translations · Slang';
+	@override String get welcome => 'Welcome to the Flutter course!';
+	@override String greeting({required Object name}) => 'Hello, ${name}!';
+	@override String itemsCount({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('en'))(n,
 		zero: 'No items',
 		one: '1 item',
 		other: '${n} items',
@@ -63,7 +54,7 @@ class Translations with BaseTranslations<AppLocale, Translations> {
 ///
 /// The Dart AOT compiler has issues with very large switch statements,
 /// so the map is split into smaller functions (512 entries each).
-extension on Translations {
+extension on TranslationsEn {
 	dynamic _flatMapFunction(String path) {
 		return switch (path) {
 			'appBarTitle' => 'Translations · Slang',

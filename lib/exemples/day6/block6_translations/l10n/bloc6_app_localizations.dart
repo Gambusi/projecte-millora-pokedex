@@ -8,7 +8,6 @@ import 'package:intl/intl.dart' as intl;
 import 'bloc6_app_localizations_ca.dart';
 import 'bloc6_app_localizations_en.dart';
 import 'bloc6_app_localizations_es.dart';
-import 'bloc6_app_localizations_fr.dart';
 
 // ignore_for_file: type=lint
 
@@ -102,7 +101,6 @@ abstract class Bloc6AppLocalizations {
     Locale('ca'),
     Locale('en'),
     Locale('es'),
-    Locale('fr'),
   ];
 
   /// No description provided for @appBarTitle.
@@ -143,7 +141,7 @@ class _Bloc6AppLocalizationsDelegate
 
   @override
   bool isSupported(Locale locale) =>
-      <String>['ca', 'en', 'es', 'fr'].contains(locale.languageCode);
+      <String>['ca', 'en', 'es'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_Bloc6AppLocalizationsDelegate old) => false;
@@ -158,8 +156,6 @@ Bloc6AppLocalizations lookupBloc6AppLocalizations(Locale locale) {
       return Bloc6AppLocalizationsEn();
     case 'es':
       return Bloc6AppLocalizationsEs();
-    case 'fr':
-      return Bloc6AppLocalizationsFr();
   }
 
   throw FlutterError(

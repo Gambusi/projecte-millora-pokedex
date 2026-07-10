@@ -24,6 +24,7 @@ dependencies:
   slang: ^4.18.0
   slang_flutter: ^4.18.0
 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -33,7 +34,9 @@ dev_dependencies:
   json_serializable: 6.12.0
   riverpod_generator: 4.0.3
 
+
 flutter:
   uses-material-design: true
+  generate: true
   assets:
     - assets/images/

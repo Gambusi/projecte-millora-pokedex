@@ -6,7 +6,7 @@
 /// Locales: 3
 /// Strings: 18 (6 per locale)
 ///
-/// Built on 2026-05-12 at 16:02 UTC
+/// Built on 2026-07-10 at 05:38 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint, unused_import
@@ -18,19 +18,19 @@ import 'package:slang/generated.dart';
 import 'package:slang_flutter/slang_flutter.dart';
 export 'package:slang_flutter/slang_flutter.dart';
 
-import 'strings_ca.g.dart' as l_ca;
+import 'strings_en.g.dart' as l_en;
 import 'strings_es.g.dart' as l_es;
-part 'strings_en.g.dart';
+part 'strings_ca.g.dart';
 
 /// Supported locales.
 ///
 /// Usage:
-/// - LocaleSettings.setLocale(AppLocale.en) // set locale
-/// - Locale locale = AppLocale.en.flutterLocale // get flutter locale from enum
-/// - if (LocaleSettings.currentLocale == AppLocale.en) // locale check
+/// - LocaleSettings.setLocale(AppLocale.ca) // set locale
+/// - Locale locale = AppLocale.ca.flutterLocale // get flutter locale from enum
+/// - if (LocaleSettings.currentLocale == AppLocale.ca) // locale check
 enum AppLocale with BaseAppLocale<AppLocale, Translations> {
-	en(languageCode: 'en'),
 	ca(languageCode: 'ca'),
+	en(languageCode: 'en'),
 	es(languageCode: 'es');
 
 	const AppLocale({
@@ -63,14 +63,14 @@ enum AppLocale with BaseAppLocale<AppLocale, Translations> {
 		PluralResolver? ordinalResolver,
 	}) {
 		switch (this) {
-			case AppLocale.en:
-				return TranslationsEn(
+			case AppLocale.ca:
+				return TranslationsCa(
 					overrides: overrides,
 					cardinalResolver: cardinalResolver,
 					ordinalResolver: ordinalResolver,
 				);
-			case AppLocale.ca:
-				return l_ca.TranslationsCa(
+			case AppLocale.en:
+				return l_en.TranslationsEn(
 					overrides: overrides,
 					cardinalResolver: cardinalResolver,
 					ordinalResolver: ordinalResolver,
@@ -166,7 +166,7 @@ class LocaleSettings extends BaseFlutterLocaleSettings<AppLocale, Translations> 
 /// Provides utility functions without any side effects.
 class AppLocaleUtils extends BaseAppLocaleUtils<AppLocale, Translations> {
 	AppLocaleUtils._() : super(
-		baseLocale: AppLocale.en,
+		baseLocale: AppLocale.ca,
 		locales: AppLocale.values,
 	);
 

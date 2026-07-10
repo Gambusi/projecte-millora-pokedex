@@ -1,0 +1,4 @@
+arb-dir: lib/exemples/day6/block6_translations/l10n
+template-arb-file: app_ca.arb
+output-localization-file: bloc6_app_localizations.dart
+output-class: Bloc6AppLocalizations
