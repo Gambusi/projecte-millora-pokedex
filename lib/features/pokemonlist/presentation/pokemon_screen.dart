@@ -17,7 +17,7 @@ class _PokemonScreenState extends State<PokemonScreen> {
   /// Afegim variable per al text del cercador
   String searchText = '';
 
-  /// Llista completa de Pokémon
+  /// Llista completa de Pokémons
   List<Pokemon> allPokemon = [];
 
   /// Llista de Pokémon recuperada des de la PokéAPI
