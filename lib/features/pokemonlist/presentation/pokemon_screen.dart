@@ -14,6 +14,12 @@ class PokemonScreen extends StatefulWidget {
 class _PokemonScreenState extends State<PokemonScreen> {
   final PokemonScreenController controller = PokemonScreenController();
 
+  /// Afegim variable per al text del cercador
+  String searchText = '';
+
+  /// Llista completa de Pokémon
+  List<Pokemon> allPokemon = [];
+
   /// Llista de Pokémon recuperada des de la PokéAPI
   late Future<List<Pokemon>> pokemonList;
 
@@ -21,7 +27,7 @@ class _PokemonScreenState extends State<PokemonScreen> {
   void initState() {
     super.initState();
 
-    /// Carreguem els primers Pokémon en obrir la pantalla
+    // Carreguem els primers Pokémon en obrir la pantalla
     pokemonList = controller.fetchPokemonList();
   }
 
@@ -37,8 +43,26 @@ class _PokemonScreenState extends State<PokemonScreen> {
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: TextField(
+              decoration: const InputDecoration(
+                hintText: 'Buscar Pokémon',
+                prefixIcon: Icon(Icons.search),
+                border: OutlineInputBorder(),
+              ),
 
-          /// Mostrem la llista de Pokémon dins d'un FutureBuilder
+              onChanged: (value) {
+                setState(() {
+                  searchText = value;
+                });
+              },
+            ),
+          ),
+
+          const SizedBox(height: 16),
+
+          // Mostrem la llista de Pokémon dins d'un FutureBuilder
           Expanded(
             child: FutureBuilder<List<Pokemon>>(
               future: pokemonList,
@@ -55,12 +79,21 @@ class _PokemonScreenState extends State<PokemonScreen> {
                   return const Center(child: Text('No data'));
                 }
 
+                // Guardem la llista completa de Pokémon
+                allPokemon = snapshot.data!;
+
+                // Filtratge segons el text escrit
+                final filteredPokemon = allPokemon.where((pokemon) {
+                  return pokemon.name.toLowerCase().contains(
+                    searchText.toLowerCase(),
+                  );
+                }).toList();
+
                 // Mostrem tots els Pokémon recuperats
                 return ListView.builder(
-                  itemCount: snapshot.data!.length,
-
+                  itemCount: filteredPokemon.length,
                   itemBuilder: (context, index) {
-                    return PokemonCard(pokemon: snapshot.data![index]);
+                    return PokemonCard(pokemon: filteredPokemon[index]);
                   },
                 );
               },
