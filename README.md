@@ -126,6 +126,6 @@ Conceptes aplicats:
 
 ## Autor
 
-Oscar Capilla
+Oscar Capilla 
 
 Projecte final de pràctica i consolidació dels coneixements adquirits durant el curs de Flutter.
