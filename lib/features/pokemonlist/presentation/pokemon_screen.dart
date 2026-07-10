@@ -27,10 +27,17 @@ class _PokemonScreenState extends State<PokemonScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Pokemon')),
-      body: Column(
+    return SafeArea(
+      child: Column(
         children: [
+          const Padding(
+            padding: EdgeInsets.all(16),
+            child: Text(
+              'Pokédex',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+          ),
+
           /// Mostrem la llista de Pokémon dins d'un FutureBuilder
           Expanded(
             child: FutureBuilder<List<Pokemon>>(
@@ -39,9 +46,11 @@ class _PokemonScreenState extends State<PokemonScreen> {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return const Center(child: CircularProgressIndicator());
                 }
+
                 if (snapshot.hasError) {
                   return Center(child: Text('Error: ${snapshot.error}'));
                 }
+
                 if (!snapshot.hasData) {
                   return const Center(child: Text('No data'));
                 }

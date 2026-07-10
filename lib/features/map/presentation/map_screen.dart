@@ -5,8 +5,8 @@ class MapScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SizedBox.expand(
+    return SafeArea(
+      child: SizedBox.expand(
         child: Image.asset('assets/images/map.jpg', fit: BoxFit.cover),
       ),
     );

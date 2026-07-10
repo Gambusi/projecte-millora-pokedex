@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_curs/features/map/presentation/map_screen.dart';
 import 'package:flutter_curs/features/pokemonlist/presentation/pokemon_screen.dart';
 import 'package:flutter_curs/features/profile/presentation/profile_screen.dart';
+import 'package:flutter_curs/features/pokemonlist/presentation/favorites_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -70,16 +71,34 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // Pantalles principals de l'aplicació.
+      // Afegim una pestanya específica per als Pokémon favorits.
       body: IndexedStack(
         index: _index,
-        children: [MapScreen(), PokemonScreen(), ProfileScreen()],
+        children: [
+          MapScreen(),
+          PokemonScreen(),
+          FavoritesScreen(),
+          ProfileScreen(),
+        ],
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _index,
-        onTap: (index) => setState(() => _index = index),
+        onTap: (index) {
+          setState(() {
+            _index = index;
+          });
+        },
+        selectedItemColor: Colors.red,
+        unselectedItemColor: Colors.grey,
+
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.map), label: 'Mapa'),
           BottomNavigationBarItem(icon: Icon(Icons.list), label: 'Llista'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.favorite),
+            label: 'Favorits',
+          ),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Perfil'),
         ],
       ),
