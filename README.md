@@ -1,45 +1,131 @@
-# Pokédex — Curs de Flutter
+# Projecte Millora Pokédex
 
-Aplicació Pokédex desenvolupada al llarg del curs **"Desenvolupament d'Apps Multiplataforma amb Flutter"**.
+Projecte final desenvolupat a partir de l'aplicació Pokédex creada durant el curs de Flutter.
 
-## Estructura per branques (calendari)
+L'objectiu principal del projecte ha estat ampliar les funcionalitats existents aplicant els conceptes treballats durant la formació, com ara el consum d'APIs, la navegació entre pantalles, la persistència local de dades i la gestió de l'estat.
 
-Cada sessió usarem una branca **inici** (d’on sortim) i, quan el docent en publiqui una, una branca **final** amb el codi comentat de referència d’aquell dia.
+---
 
+## Tecnologies utilitzades
 
-## Instruccions
+- Flutter
+- Dart
+- Dio
+- Freezed
+- SharedPreferences
+- PokeAPI
 
-### Primera vegada (només una)
+---
 
-```bash
-git clone https://github.com/arnair/flutter_curs.git
-cd flutter_curs
-flutter pub get
-```
+## Millores implementades
 
-La branca per defecte del repositori és `dia-1-inici` (o comprova-ho amb `git branch`).
+### 1. Pantalla de detall dels Pokémon
 
-### Inici de cada classe (quan hi hagi noves branques al repositori)
+S'ha afegit una pantalla de detall accessible des de cada targeta de Pokémon.
 
-```bash
-git fetch origin
-git checkout dia-X-inici
-flutter pub get
-```
+Funcionalitats:
 
-### Si t'has perdut o vols comparar amb el codi resolt
+- Navegació des del llistat principal.
+- Visualització ampliada de la informació del Pokémon.
+- Mostra de:
+  - Nom
+  - Imatge
+  - Identificador
+  - Tipus
 
-```bash
-git fetch origin
-git checkout dia-X-final
-```
+Conceptes aplicats:
 
-## Executar l’app
+- Navigator
+- Pas de dades entre pantalles
+- Reutilització de models
 
-L’**emulador Android** o el **simulador iOS** són l’objectiu per defecte. **Web (Chrome)** és alternativa.
+---
 
-```bash
-flutter devices
-flutter run
-# o, per web només:  flutter run -d chrome
-```
+### 2. Llistat de Pokémon des de la PokeAPI
+
+S'ha ampliat el projecte perquè carregui múltiples Pokémon des de la PokéAPI.
+
+Funcionalitats:
+
+- Recuperació dels primers Pokémon de la PokéAPI.
+- Visualització mitjançant una llista dinàmica.
+- Reutilització de les targetes existents.
+
+Conceptes aplicats:
+
+- Dio
+- FutureBuilder
+- ListView.builder
+- Models Freezed
+
+---
+
+### 3. Sistema de favorits
+
+S'ha implementat un sistema que permet marcar i desmarcar Pokémon com a favorits.
+
+Funcionalitats:
+
+- Afegir Pokémon a favorits.
+- Eliminar Pokémon de favorits.
+- Persistència de dades entre diferents execucions de l'aplicació.
+
+Conceptes aplicats:
+
+- SharedPreferences
+- StatefulWidget
+- Gestió d'estat
+
+---
+
+### 4. Pantalla de favorits
+
+S'ha afegit una nova pestanya dins de la navegació principal.
+
+Funcionalitats:
+
+- Visualització exclusiva dels Pokémon marcats com a favorits.
+- Sincronització automàtica amb els canvis realitzats des de la pantalla de detall.
+- Reutilització de les targetes de Pokémon.
+
+Conceptes aplicats:
+
+- BottomNavigationBar
+- SharedPreferences
+- FutureBuilder
+- Reutilització de components
+
+---
+
+### 5. Cerca de Pokémon
+
+S'ha incorporat un cercador a la pantalla principal de la Pokédex.
+
+Funcionalitats:
+
+- Cerca per nom.
+- Filtrat en temps real.
+- Actualització automàtica dels resultats.
+
+Conceptes aplicats:
+
+- TextField
+- StatefulWidget
+- Filtrat de col·leccions
+
+---
+
+## Altres millores
+
+- Pantalla de càrrega animada.
+- Perfil amb persistència de dades.
+- Adaptació visual mitjançant SafeArea per evitar problemes amb dispositius que incorporen càmera integrada a la pantalla.
+- Millores d'usabilitat i navegació.
+
+---
+
+## Autor
+
+Oscar Capilla
+
+Projecte final de pràctica i consolidació dels coneixements adquirits durant el curs de Flutter.
