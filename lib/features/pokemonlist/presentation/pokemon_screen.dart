@@ -13,13 +13,15 @@ class PokemonScreen extends StatefulWidget {
 
 class _PokemonScreenState extends State<PokemonScreen> {
   final PokemonScreenController controller = PokemonScreenController();
-  // Llista de Pokémon recuperada des de la PokéAPI
+
+  /// Llista de Pokémon recuperada des de la PokéAPI
   late Future<List<Pokemon>> pokemonList;
 
   @override
   void initState() {
     super.initState();
-    // Carreguem els primers Pokémon en obrir la pantalla
+
+    /// Carreguem els primers Pokémon en obrir la pantalla
     pokemonList = controller.fetchPokemonList();
   }
 
@@ -29,7 +31,7 @@ class _PokemonScreenState extends State<PokemonScreen> {
       appBar: AppBar(title: const Text('Pokemon')),
       body: Column(
         children: [
-          // Mostrem la llista de Pokémon dins d'un FutureBuilder
+          /// Mostrem la llista de Pokémon dins d'un FutureBuilder
           Expanded(
             child: FutureBuilder<List<Pokemon>>(
               future: pokemonList,
