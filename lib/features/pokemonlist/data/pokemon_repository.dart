@@ -8,4 +8,17 @@ class PokemonRepository {
     );
     return Pokemon.fromJson(response.data);
   }
+
+  // Recupera els primers Pokémon de la PokéAPI
+  Future<List<Pokemon>> getPokemonList() async {
+    final List<Pokemon> pokemonList = [];
+
+    // Obtenim els primers 20 Pokémon
+    for (int i = 1; i <= 20; i++) {
+      final pokemon = await getPokemon(i);
+
+      pokemonList.add(pokemon);
+    }
+    return pokemonList;
+  }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_curs/widgets/cards/pokemon_card.dart';
 
-import '../domain/pokemon_model.dart';
+import 'package:flutter_curs/features/pokemonlist/domain/pokemon_model.dart';
 import 'pokemon_screen_controller.dart';
 
 class PokemonScreen extends StatefulWidget {
@@ -13,19 +13,14 @@ class PokemonScreen extends StatefulWidget {
 
 class _PokemonScreenState extends State<PokemonScreen> {
   final PokemonScreenController controller = PokemonScreenController();
-  int pokemonId = 1; //Pokemon per defecte
-  late Future<Pokemon>? pokemon;
+  // Llista de Pokémon recuperada des de la PokéAPI
+  late Future<List<Pokemon>> pokemonList;
 
   @override
   void initState() {
     super.initState();
-    fetchPokemon();
-  }
-
-  Future<void> fetchPokemon() async {
-    pokemon = controller.fetchPokemon(
-      pokemonId,
-    ); //Afegim el pokemonId com a paràmetre
+    // Carreguem els primers Pokémon en obrir la pantalla
+    pokemonList = controller.fetchPokemonList();
   }
 
   @override
@@ -34,30 +29,10 @@ class _PokemonScreenState extends State<PokemonScreen> {
       appBar: AppBar(title: const Text('Pokemon')),
       body: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(16),
-            child: TextField(
-              keyboardType: TextInputType.number,
-              decoration: const InputDecoration(
-                labelText: 'ID Pokémon',
-                border: OutlineInputBorder(),
-              ),
-              onSubmitted: (value) {
-                final id = int.tryParse(value);
-
-                if (id == null) return;
-
-                setState(() {
-                  pokemonId = id;
-                  fetchPokemon();
-                });
-              },
-            ),
-          ),
-
+          // Mostrem la llista de Pokémon dins d'un FutureBuilder
           Expanded(
-            child: FutureBuilder<Pokemon>(
-              future: pokemon,
+            child: FutureBuilder<List<Pokemon>>(
+              future: pokemonList,
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return const Center(child: CircularProgressIndicator());
@@ -68,10 +43,14 @@ class _PokemonScreenState extends State<PokemonScreen> {
                 if (!snapshot.hasData) {
                   return const Center(child: Text('No data'));
                 }
-                return SizedBox(
-                  width: double.infinity,
-                  height: 200,
-                  child: PokemonCard(pokemon: snapshot.data!),
+
+                // Mostrem tots els Pokémon recuperats
+                return ListView.builder(
+                  itemCount: snapshot.data!.length,
+
+                  itemBuilder: (context, index) {
+                    return PokemonCard(pokemon: snapshot.data![index]);
+                  },
                 );
               },
             ),
