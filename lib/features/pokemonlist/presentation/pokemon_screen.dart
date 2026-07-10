@@ -13,6 +13,7 @@ class PokemonScreen extends StatefulWidget {
 
 class _PokemonScreenState extends State<PokemonScreen> {
   final PokemonScreenController controller = PokemonScreenController();
+  int pokemonId = 1; //Pokemon per defecte
   late Future<Pokemon>? pokemon;
 
   @override
@@ -22,31 +23,60 @@ class _PokemonScreenState extends State<PokemonScreen> {
   }
 
   Future<void> fetchPokemon() async {
-    pokemon = controller.fetchPokemon();
+    pokemon = controller.fetchPokemon(
+      pokemonId,
+    ); //Afegim el pokemonId com a paràmetre
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Pokemon')),
-      body: FutureBuilder<Pokemon>(
-        future: pokemon,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
-          }
-          if (snapshot.hasError) {
-            return Center(child: Text('Error: ${snapshot.error}'));
-          }
-          if (!snapshot.hasData) {
-            return const Center(child: Text('No data'));
-          }
-          return SizedBox(
-            width: double.infinity,
-            height: 200,
-            child: PokemonCard(pokemon: snapshot.data!),
-          );
-        },
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: TextField(
+              keyboardType: TextInputType.number,
+              decoration: const InputDecoration(
+                labelText: 'ID Pokémon',
+                border: OutlineInputBorder(),
+              ),
+              onSubmitted: (value) {
+                final id = int.tryParse(value);
+
+                if (id == null) return;
+
+                setState(() {
+                  pokemonId = id;
+                  fetchPokemon();
+                });
+              },
+            ),
+          ),
+
+          Expanded(
+            child: FutureBuilder<Pokemon>(
+              future: pokemon,
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(child: CircularProgressIndicator());
+                }
+                if (snapshot.hasError) {
+                  return Center(child: Text('Error: ${snapshot.error}'));
+                }
+                if (!snapshot.hasData) {
+                  return const Center(child: Text('No data'));
+                }
+                return SizedBox(
+                  width: double.infinity,
+                  height: 200,
+                  child: PokemonCard(pokemon: snapshot.data!),
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }
